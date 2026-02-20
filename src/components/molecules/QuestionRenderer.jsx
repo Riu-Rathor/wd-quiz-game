@@ -1,6 +1,6 @@
 import { RadioOption } from "../atoms/RadioOption";
 import { CardOption } from "../atoms/CardOption";
-import { ScaleOption } from "../atoms/ScaleOption";
+import { StarOption } from "../atoms/StarOption";
 import { TextInput } from "../atoms/TextInput";
 import { motion } from "framer-motion";
 
@@ -65,23 +65,12 @@ export const QuestionRenderer = ({ question, value, onChange }) => {
       );
 
     case "scale":
-      const numbers = Array.from(
-        { length: question.max - question.min + 1 },
-        (_, i) => question.min + i
-      );
-
-      return (
-        <div className="flex justify-center gap-4 mt-6">
-          {numbers.map((num) => (
-            <ScaleOption
-              key={num}
-              value={num}
-              selected={value === num}
-              onClick={() => onChange(num)}
-            />
-          ))}
-        </div>
-      );
+  return (
+    <StarOption
+      value={value}
+      onChange={onChange}
+    />
+  );
 
     default:
       return null;
