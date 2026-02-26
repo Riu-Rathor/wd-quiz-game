@@ -22,6 +22,12 @@ export const Survey = ({ questions, journeyType }) => {
     }
   }
 
+  function handlePrev() {
+    if (currentIndex > 0) {
+      setCurrentIndex((prev) => prev - 1);
+    }
+  }
+
   function handleSubmit(finalAnswers) {
     console.log("Journey:", journeyType);
     console.log("Final Answers:", finalAnswers);
@@ -39,6 +45,8 @@ export const Survey = ({ questions, journeyType }) => {
         question={currentQuestion}
         initialValue={answers[currentQuestion.id]}
         onNext={handleNext}
+        onPrev={handlePrev}
+        isFirstQuestion={currentIndex === 0}
       />
     </div>
   );

@@ -5,7 +5,9 @@ import { QuestionRenderer } from "../molecules/QuestionRenderer";
 export const QuestionCard = ({
   question,
   onNext,
+  onPrev,
   initialValue,
+  isFirstQuestion = false,
 }) => {
   const [answer, setAnswer] = useState(
     initialValue ?? getDefaultValue(question.type)
@@ -104,17 +106,41 @@ export const QuestionCard = ({
         )}
 
         {/* Next Button */}
-        <div className="mt-10 flex justify-center">
+        <div className="mt-10 flex justify-center gap-4">
+          {!isFirstQuestion && (
+            <motion.button
+              whileHover={{
+                scale: 1.08,
+                boxShadow: "0px 10px 25px rgba(236, 72, 153, 0.4)",
+              }}
+              whileTap={{ scale: 0.95 }}
+              className="relative px-10 py-4 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-600 overflow-hidden cursor-pointer"
+              onClick={onPrev}
+            >
+              <span className="relative z-10">Previous</span>
+
+              {/* Animated Glow */}
+              <motion.span
+                className="absolute inset-0 bg-white opacity-20 blur-2xl"
+                animate={{ x: ["-100%", "100%"] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 3,
+                  ease: "linear",
+                }}
+              />
+            </motion.button>
+          )}
           <motion.button
             whileHover={{
               scale: 1.08,
               boxShadow: "0px 10px 25px rgba(236, 72, 153, 0.4)",
             }}
             whileTap={{ scale: 0.95 }}
-            className="relative px-10 py-4 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-600 overflow-hidden"
+            className="relative px-10 py-4 text-lg font-semibold text-white rounded-full bg-gradient-to-r from-pink-500 to-purple-600 overflow-hidden cursor-pointer"
             onClick={handleNext}
           >
-            <span className="relative z-10">Next ✨</span>
+            <span className="relative z-10">Next</span>
 
             {/* Animated Glow */}
             <motion.span
