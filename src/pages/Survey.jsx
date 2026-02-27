@@ -43,7 +43,7 @@ export const Survey = ({ questions, journeyType }) => {
     <div className="survey-container">
       <QuestionCard
         question={currentQuestion}
-        initialValue={answers[currentQuestion.id]}
+        initialValue={answers[currentQuestion?.id]}
         onNext={handleNext}
         onPrev={handlePrev}
         isFirstQuestion={currentIndex === 0}

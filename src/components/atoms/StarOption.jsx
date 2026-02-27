@@ -1,9 +1,14 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 export const StarOption = ({ max = 5, value, onChange }) => {
-  const [selected, setSelected] = useState(value || 0);
+  const [selected, setSelected] = useState(value !== null && value !== undefined ? value : 0);
+  
+  // Update selected state when value prop changes
+  useEffect(() => {
+    setSelected(value !== null && value !== undefined ? value : 0);
+  }, [value]);
   
   // Rating emojis
   const ratingEmojis = {
@@ -32,7 +37,8 @@ export const StarOption = ({ max = 5, value, onChange }) => {
     <div className="flex flex-col items-center mt-6">
       {/* Rating Emoji Display */}
       <motion.div
-        className="mb-6 text-6xl h-20 flex items-center justify-center"
+
+        className="mb-4 sm:mb-6 text-4xl sm:text-5xl lg:text-6xl h-16 sm:h-20 flex items-center justify-center"
         key={selected}
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
@@ -42,7 +48,8 @@ export const StarOption = ({ max = 5, value, onChange }) => {
       </motion.div>
 
       {/* Horizontal Bulbs Container */}
-      <div className="relative flex items-center justify-center gap-3 px-8 py-4 bg-purple-100 rounded-full shadow-lg border border-purple-300">
+
+      <div className="relative flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-4 bg-purple-100 rounded-full shadow-lg border border-purple-300">
         {bulbs.map((bulb, index) => { 
           const isFilled = index + 1 <= selected;
           return (
@@ -68,7 +75,8 @@ export const StarOption = ({ max = 5, value, onChange }) => {
               }}
             >
               <motion.span
-                className="text-4xl block"
+
+                className="text-2xl sm:text-3xl lg:text-4xl block"
                 style={{ 
                   opacity: isFilled ? 1 : 0.4,
                   filter: isFilled ? "brightness(1.2)" : "brightness(0.8)"
@@ -87,7 +95,8 @@ export const StarOption = ({ max = 5, value, onChange }) => {
 
         {/* Rating Circle Badge at End */}
         <motion.div 
-          className="ml-2 w-16 h-16 rounded-full bg-gradient-to-br from-pink-300 to-purple-400 flex items-center justify-center text-white font-bold shadow-lg "
+
+          className="ml-1 sm:ml-2 w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-gradient-to-br from-pink-300 to-purple-400 flex items-center justify-center text-white font-bold shadow-lg"
           animate={{
             scale: selected > 0 ? 1 : 0.9,
             boxShadow: selected > 0 
@@ -95,7 +104,8 @@ export const StarOption = ({ max = 5, value, onChange }) => {
               : "0 0 10px rgba(0,0,0,0.2)"
           }}
         >
-          <span className="text-2xl">{selected > 0 ? selected : '-'}</span>
+
+          <span className="text-lg sm:text-xl lg:text-2xl">{selected}</span>
         </motion.div>
       </div>
     </div>

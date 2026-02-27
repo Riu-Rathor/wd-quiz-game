@@ -22,7 +22,7 @@ export default function LoginForm() {
 };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
       <FormField>
         <Input
           placeholder="Your Name"
@@ -41,7 +41,7 @@ export default function LoginForm() {
       </FormField>
 
       <FormField>
-        <div className="flex gap-4">
+        <div className="flex gap-3 w-full">
           <GenderOption
             type="female"
             selected={gender === "female"}

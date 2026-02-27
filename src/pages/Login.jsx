@@ -9,7 +9,7 @@ export default function Login() {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8 }}
-        className="text-3xl font-bold text-purple-700 text-center mb-8"
+        className="text-2xl sm:text-3xl lg:text-4xl font-bold text-purple-700 text-center mb-6 sm:mb-8 px-2"
         >
         Celebrating Her Impact 💜
       </motion.h1>

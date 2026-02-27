@@ -9,12 +9,10 @@ export default function GenderOption({ type, selected, onClick }) {
     <motion.div
       onClick={onClick}
       className="flex-1 relative rounded-2xl cursor-pointer"
-      
-      /* Hover handled here (stable area) */
       whileHover="hover"
       whileTap="tap"
     >
-      {/* Glow Layer (does not scale) */}
+      {/* Glow Layer (Stable - does not scale) */}
       <motion.div
         className="absolute inset-0 rounded-2xl"
         animate={
@@ -44,14 +42,14 @@ export default function GenderOption({ type, selected, onClick }) {
           tap: { scale: 0.96 },
         }}
         transition={{ duration: 0.15, ease: "linear" }}
-        className={`relative flex flex-col items-center justify-center 
-        py-5 rounded-2xl overflow-hidden
-        backdrop-blur-lg border transition-all duration-300
-        ${
-          selected
-            ? "bg-gradient-to-br from-pink-300/60 to-purple-300/60 border-white/60 text-white"
-            : "bg-white/30 border-white/40 text-gray-700"
-        }`}
+        className={`relative flex flex-col items-center justify-center
+          py-3 sm:py-5 rounded-2xl overflow-hidden
+          backdrop-blur-lg border transition-all duration-300
+          ${
+            selected
+              ? "bg-gradient-to-br from-pink-300/60 to-purple-300/60 border-white/60 text-white"
+              : "bg-white/30 border-white/40 text-gray-700"
+          }`}
       >
         {/* Animated Gradient */}
         {selected && (
@@ -79,10 +77,15 @@ export default function GenderOption({ type, selected, onClick }) {
           }}
           className="relative z-10"
         >
-          {isFemale ? <FaFemale size={26} /> : <FaMale size={26} />}
+          {isFemale ? (
+            <FaFemale className="text-xl sm:text-2xl" />
+          ) : (
+            <FaMale className="text-xl sm:text-2xl" />
+          )}
         </motion.div>
 
-        <span className="mt-3 capitalize relative z-10 font-medium tracking-wide">
+        {/* Label */}
+        <span className="mt-2 sm:mt-3 capitalize relative z-10 font-medium tracking-wide text-sm sm:text-base">
           {type}
         </span>
       </motion.div>

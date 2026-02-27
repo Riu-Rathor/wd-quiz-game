@@ -84,7 +84,7 @@ export const RadioOption = ({ label, checked, onChange }) => {
       </motion.div>
       {/* Label as sibling, never overlaps */}
       <motion.span
-        className="text-base font-semibold whitespace-nowrap px-2"
+        className="text-sm sm:text-base font-semibold whitespace-nowrap px-2"
         animate={{
           color: checked ? "#db2777" : "#374151",
         }}

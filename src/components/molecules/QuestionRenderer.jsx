@@ -17,7 +17,7 @@ export const QuestionRenderer = ({ question, value, onChange }) => {
 
     case "single":
       return (
-        <div className="flex flex-col gap-4 mt-6">
+        <div className="flex flex-col gap-3 sm:gap-4 mt-4 sm:mt-6 px-2">
           {question.options?.map((option) => (
             <RadioOption
               key={option.id}
@@ -31,9 +31,10 @@ export const QuestionRenderer = ({ question, value, onChange }) => {
 
     case "multiple":
       return (
-        <div className="mt-6 flex flex-wrap justify-center gap-4">
+        <div className="mt-4 sm:mt-6 flex flex-wrap justify-center gap-3 sm:gap-4 px-2">
   {question.options.map((option, index) => {
-    const isChecked = value?.includes(option.value);
+    const currentValue = Array.isArray(value) ? value : [];
+    const isChecked = currentValue.includes(option.value);
 
     return (
       <motion.div
@@ -52,9 +53,9 @@ export const QuestionRenderer = ({ question, value, onChange }) => {
           checked={isChecked}
           onClick={() => {
             if (isChecked) {
-              onChange(value.filter((v) => v !== option.value));
+              onChange(currentValue.filter((v) => v !== option.value));
             } else {
-              onChange([...(value || []), option.value]);
+              onChange([...currentValue, option.value]);
             }
           }}
         />

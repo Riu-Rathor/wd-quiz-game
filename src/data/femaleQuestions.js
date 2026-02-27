@@ -21,7 +21,7 @@ export const femaleQuestions = [
   },
   {
     id: "f_q2",
-    title: "On a scale of 1–5, how valued do you feel in your workplace?",
+    title: "On a scale of 1-5, how valued do you feel in your workplace?",
     type: "scale",
     required: true,
     min: 1,
@@ -40,6 +40,12 @@ export const femaleQuestions = [
       { id: "opt4", label: "Emotional Anchor", value: "emotional_anchor" },
       { id: "opt5", label: "Leader", value: "leader" },
       { id: "opt6", label: "Personal Growth", value: "personal_growth" },
+      { id: "opt7", label: "Professional", value: "professional" },
+      { id: "opt8", label: "Entrepreneur", value: "entrepreneur" },
+      { id: "opt9", label: "Caregiver", value: "caregiver" },
+      { id: "opt10", label: "Mentor", value: "mentor" },
+      { id: "opt11", label: "Friend", value: "friend" },
+      { id: "opt12", label: "Dreamer", value: "dreamer" },
     ],
   },
   {
